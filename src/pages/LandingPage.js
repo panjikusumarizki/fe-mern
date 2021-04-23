@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
 
-import moduleName from 'elements/Button'
+import Header from 'parts/Header'
+import Hero from 'parts/Hero'
+import Button from 'elements/Button'
 
+import landingPage from 'json/landingPage.json'
 export default class LandingPage extends Component {
   render() {
     return (
-      <div>
-      </div>
+      <>
+        <Header {...this.props}></Header>
+        <Hero data={landingPage.hero}/>
+      </>
     )
   }
 }
