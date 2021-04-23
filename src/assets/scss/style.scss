@@ -5,7 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 @import "functions";
 @import "variables";
 @import "mixins";
@@ -46,7 +46,7 @@
 
 .brand-text-icon {
   font-size: 26px;
-  font-weight: 700;
+  font-weight: 600;
   font-family: 'Poppins', sans-serif;
   color: $primary;
   &:hover {
@@ -59,6 +59,7 @@ header {
   border-bottom: 1px solid $gray-200;
   width: 100%;
   position: relative;
+  margin-bottom: 50px;
 
   .navbar {
     height: 80px;
