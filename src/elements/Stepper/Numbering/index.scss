@@ -63,7 +63,7 @@ ol.stepper {
       & ~ li {
         color: $gray-500;
         background: $stepperMainColor;
-        &:afetr {
+        &:after {
           content: none;
         }
       }
