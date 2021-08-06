@@ -42,22 +42,25 @@ class Checkout extends Component {
 
   render() {
     const { data } = this.state;
-    const { checkout } = this.props;
+    const { checkout, page } = this.props;
 
-    if (!checkout) return <div className="container">
-      <div 
-        className="row align-items-center justify-content-center text-center"
-        style={{ height: '100vh'}}>
-          <div className="col-3">
-            Pilih Kamar Dulu
-            <div>
-              <Button className="btn mt-5" type="link" href="/" isLight>
-                Back
-              </Button>
+    if (!checkout) 
+    return (
+      <div className="container">
+        <div 
+          className="row align-items-center justify-content-center text-center"
+          style={{ height: '100vh'}}>
+            <div className="col-3">
+              Pilih Kamar Dulu
+              <div>
+                <Button className="btn mt-5" type="button" onClick={() => this.props.history.goBack()} isLight>
+                  Back
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-    </div>
+      </div>
+    );
 
     const steps = {
       bookingInformation: {
@@ -67,7 +70,7 @@ class Checkout extends Component {
           <BookingInformation
             data={data}
             checkout={checkout}
-            ItemDetails={ItemDetails}
+            ItemDetails={page[checkout._id]}
             onChange={this.onChange}
           />
         ),
@@ -78,7 +81,7 @@ class Checkout extends Component {
         content: (
           <Payment
             data={data}
-            ItemDetails={ItemDetails}
+            ItemDetails={page[checkout._id]}
             checkout={checkout}
             onChange={this.onChange}
           />
@@ -96,8 +99,7 @@ class Checkout extends Component {
         <Header isCentered/>
 
         <Stepper steps={steps}>
-          {
-            (prevStep, nextStep, CurrentStep, steps) => (
+          {(prevStep, nextStep, CurrentStep, steps) => (
               <>
                 <Numbering
                   data={steps}
@@ -185,16 +187,16 @@ class Checkout extends Component {
                   </Controller>
                 )}
               </>
-            )
-          }
+            )}
         </Stepper>
       </>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
-  checkout: state.checkout
+  checkout: state.checkout,
+  page: state.page
 })
 
-export default connect(mapStateToProps)(Checkout)
+export default connect(mapStateToProps, {})(Checkout)
